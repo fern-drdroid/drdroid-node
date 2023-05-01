@@ -14,12 +14,13 @@ API reference documentation is available [here](https://docs.drdroid.io/referenc
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-n3dnnt?file=app.ts)
 
 ```typescript
-import { DrdroidApiClient } from '@fern-api/drdroid';
+import { DrDroidClient } from '@fern-api/drdroid';
 
 void main();
 
 async function main() {
-  const client = new DrdroidApiClient({
+  const client = new DrDroidClient({
+    token: 'DrDroidToken',
     environment: 'DrDroidApiEnvironment',
   });
 

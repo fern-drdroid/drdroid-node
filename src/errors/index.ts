@@ -1,2 +1,2 @@
-export { CakeworkError } from "./CakeworkError";
-export { CakeworkTimeoutError } from "./CakeworkTimeoutError";
+export { DrDroidError } from "./DrDroidError";
+export { DrDroidTimeoutError } from "./DrDroidTimeoutError";

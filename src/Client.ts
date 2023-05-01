@@ -4,30 +4,27 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { Cakework } from "@fern-api/drdroid";
+import { DrDroid } from "@fern-api/drdroid";
 import urlJoin from "url-join";
 import * as serializers from "./serialization";
 import * as errors from "./errors";
 
-export declare namespace CakeworkClient {
+export declare namespace DrDroidClient {
     interface Options {
-        environment?: environments.CakeworkEnvironment | string;
+        environment?: environments.DrDroidEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 }
 
-export class CakeworkClient {
-    constructor(private readonly options: CakeworkClient.Options) {}
+export class DrDroidClient {
+    constructor(private readonly options: DrDroidClient.Options) {}
 
     /**
      * Allows users to send events to Doctor Droid
      */
-    public async publish(request: Cakework.SendEventsRequest): Promise<void> {
+    public async publish(request: DrDroid.SendEventsRequest): Promise<void> {
         const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.CakeworkEnvironment.Production,
-                "/e/ingest/events/v3"
-            ),
+            url: urlJoin(this.options.environment ?? environments.DrDroidEnvironment.Production, "/e/ingest/events/v3"),
             method: "POST",
             headers: {
                 Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
@@ -39,7 +36,7 @@ export class CakeworkClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.CakeworkError({
+            throw new errors.DrDroidError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -47,14 +44,14 @@ export class CakeworkClient {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.CakeworkError({
+                throw new errors.DrDroidError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.CakeworkTimeoutError();
+                throw new errors.DrDroidTimeoutError();
             case "unknown":
-                throw new errors.CakeworkError({
+                throw new errors.DrDroidError({
                     message: _response.error.errorMessage,
                 });
         }

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../..";
-import { Cakework } from "@fern-api/drdroid";
+import { DrDroid } from "@fern-api/drdroid";
 import * as core from "../../../core";
 
 export const SendEventsRequest: core.serialization.Schema<
     serializers.SendEventsRequest.Raw,
-    Cakework.SendEventsRequest
+    DrDroid.SendEventsRequest
 > = core.serialization.object({
     data: core.serialization.lazyObject(async () => (await import("../..")).SendEventRequestData),
 });

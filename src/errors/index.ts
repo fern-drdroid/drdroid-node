@@ -1,2 +1,2 @@
-export { DrdroidApiError } from "./DrdroidApiError";
-export { DrdroidApiTimeoutError } from "./DrdroidApiTimeoutError";
+export { CakeworkError } from "./CakeworkError";
+export { CakeworkTimeoutError } from "./CakeworkTimeoutError";

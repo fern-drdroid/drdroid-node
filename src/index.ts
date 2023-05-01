@@ -1,4 +1,4 @@
-export * as DrdroidApi from "./api";
-export { DrdroidApiClient } from "./Client";
-export { DrdroidApiEnvironment } from "./environments";
-export { DrdroidApiError, DrdroidApiTimeoutError } from "./errors";
+export * as Cakework from "./api";
+export { CakeworkClient } from "./Client";
+export { CakeworkEnvironment } from "./environments";
+export { CakeworkError, CakeworkTimeoutError } from "./errors";

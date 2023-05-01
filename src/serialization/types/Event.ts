@@ -3,15 +3,14 @@
  */
 
 import * as serializers from "..";
-import { DrdroidApi } from "@fern-api/drdroid";
+import { Cakework } from "@fern-api/drdroid";
 import * as core from "../../core";
 
-export const Event: core.serialization.ObjectSchema<serializers.Event.Raw, DrdroidApi.Event> =
-    core.serialization.object({
-        name: core.serialization.string(),
-        timestamp: core.serialization.date().optional(),
-        kvs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    });
+export const Event: core.serialization.ObjectSchema<serializers.Event.Raw, Cakework.Event> = core.serialization.object({
+    name: core.serialization.string(),
+    timestamp: core.serialization.date().optional(),
+    kvs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+});
 
 export declare namespace Event {
     interface Raw {

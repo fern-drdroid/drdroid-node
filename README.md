@@ -7,16 +7,38 @@ The Doctor Droid Node.js library provides access to the Doctor Droid API from Ja
 
 ## Documentation
 
-API reference documentation is available [here](docs_url).
+API reference documentation is available [here](https://docs.drdroid.io/reference/overview).
 
 ## Usage
 
-[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](TODO)
+[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-n3dnnt?file=app.ts)
 
 ```typescript
-import { TODO } from "TODO";
+import { DrdroidApiClient } from '@fern-api/drdroid';
 
-const TODO
+void main();
+
+async function main() {
+  const client = new DrdroidApiClient({
+    environment: 'DrDroidApiEnvironment',
+  });
+
+  await client.publish({
+    data: {
+      events: [
+        {
+          name: 'Order_Created',
+          kvs: {
+            ID: '13432',
+            City: 'BLR',
+            IS_COD: false,
+          },
+          timestamp: new Date('2017-07-21T17:32:28Z'),
+        },
+      ],
+    },
+  });
+}
 ```
 
 ## Beta status

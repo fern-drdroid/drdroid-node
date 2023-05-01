@@ -1,9 +1,9 @@
-# {Company} Node Library
+# Doctor Droid Node Library
 
-[![npm shield](https://img.shields.io/npm/v/@fern-api/{company})](https://www.npmjs.com/package/@fern-api/{company})
+[![npm shield](https://img.shields.io/npm/v/@fern-api/drdroid)](https://www.npmjs.com/package/@fern-api/drdroid)
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)
 
-The {Company} Node.js library provides access to the {Company} API from JavaScript/TypeScript.
+The Doctor Droid Node.js library provides access to the Doctor Droid API from JavaScript/TypeScript.
 
 ## Documentation
 

@@ -20,25 +20,14 @@ void main();
 
 async function main() {
   const client = new DrDroidClient({
-    token: 'DrDroidToken',
-    environment: 'DrDroidApiEnvironment',
+    token: 'YOUR_TOKEN',
   });
 
-  await client.publish({
-    data: {
-      events: [
-        {
-          name: 'Order_Created',
-          kvs: {
-            ID: '13432',
-            City: 'BLR',
-            IS_COD: false,
-          },
-          timestamp: new Date('2017-07-21T17:32:28Z'),
-        },
-      ],
-    },
-  });
+  await client.publish("Order_Created", {
+    ID: '13432',
+    City: 'BLR',
+    IS_COD: false,
+  }, new Date());
 }
 ```
 

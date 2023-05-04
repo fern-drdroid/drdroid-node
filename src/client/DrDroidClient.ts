@@ -22,7 +22,7 @@ export class DrDroidClient {
     public publish(name: string, payload?: object, eventTime?: Date): void {
         this.queue.addEvent({
             name,
-            timestamp: eventTime != null ? eventTime.getTime() : Date.now(),
+            timestamp: eventTime?.getTime(),
             kvs: payload != null ? convertEventPayload(payload) : {},
         });
     }

@@ -14,33 +14,38 @@ API reference documentation is available [here](https://docs.drdroid.io/referenc
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-n3dnnt?file=app.ts)
 
 ```typescript
-import { DrDroidClient } from '@fern-api/drdroid';
+import { DrDroidClient } from "@fern-api/drdroid";
 
-void main();
+const client = new DrDroidClient({
+    token: "YOUR_TOKEN",
+});
 
-async function main() {
-  const client = new DrDroidClient({
-    token: 'DrDroidToken',
-    environment: 'DrDroidApiEnvironment',
-  });
-
-  await client.publish({
-    data: {
-      events: [
-        {
-          name: 'Order_Created',
-          kvs: {
-            ID: '13432',
-            City: 'BLR',
-            IS_COD: false,
-          },
-          timestamp: new Date('2017-07-21T17:32:28Z'),
-        },
-      ],
-    },
-  });
-}
+await client.publish("Order_Created", {
+    ID: "13432",
+    City: "BLR",
+    IS_COD: false,
+});
 ```
+
+### Specify your own timestamp
+
+If you want to publish with a certain timestamp and not default to the current system time, you can pass an event time.
+
+```typescript
+await client.publish(
+    "Order_Created",
+    {
+        ID: "13432",
+        City: "BLR",
+        IS_COD: false,
+    },
+    new Date(2023, 4, 4, 10, 30, 0)
+);
+```
+
+### Buffering
+
+The SDK buffers events and sends them off every 2 seconds so that you can send a large volume of events without incurring a performance loss.
 
 ## Beta status
 

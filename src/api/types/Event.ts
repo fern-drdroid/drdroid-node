@@ -6,6 +6,6 @@ import * as DrDroid from "..";
 
 export interface Event {
     name: string;
-    timestamp: number;
+    timestamp?: number;
     kvs: Record<string, DrDroid.Value>;
 }

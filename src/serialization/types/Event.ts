@@ -8,7 +8,7 @@ import * as core from "../../core";
 
 export const Event: core.serialization.ObjectSchema<serializers.Event.Raw, DrDroid.Event> = core.serialization.object({
     name: core.serialization.string(),
-    timestamp: core.serialization.number(),
+    timestamp: core.serialization.number().optional(),
     kvs: core.serialization.record(
         core.serialization.string(),
         core.serialization.lazy(async () => (await import("..")).Value)
@@ -18,7 +18,7 @@ export const Event: core.serialization.ObjectSchema<serializers.Event.Raw, DrDro
 export declare namespace Event {
     interface Raw {
         name: string;
-        timestamp: number;
+        timestamp?: number | null;
         kvs: Record<string, serializers.Value.Raw>;
     }
 }

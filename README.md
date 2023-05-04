@@ -45,7 +45,7 @@ await client.publish(
 
 ### Buffering
 
-The SDK buffers events and sends them off every 2 seconds so that you can send a large volume of events without incurring a performance loss.
+The SDK buffers events and sends them in batches every 2 seconds. 
 
 ## Beta status
 

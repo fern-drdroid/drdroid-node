@@ -11,7 +11,7 @@ API reference documentation is available [here](https://docs.drdroid.io/referenc
 
 ## Usage
 
-[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-n3dnnt?file=app.ts)
+[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-tnryds?file=app.ts)
 
 ```typescript
 import { DrDroidClient } from "@fern-api/drdroid";

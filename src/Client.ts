@@ -4,7 +4,7 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { DrDroid } from "@fern-api/drdroid";
+import * as DrDroid from "./api";
 import urlJoin from "url-join";
 import * as serializers from "./serialization";
 import * as errors from "./errors";
@@ -12,24 +12,26 @@ import * as errors from "./errors";
 export declare namespace DrDroidClient {
     interface Options {
         environment?: environments.DrDroidEnvironment | string;
-        token?: core.Supplier<core.BearerToken | undefined>;
+        token: core.Supplier<core.BearerToken>;
     }
 }
 
 export class DrDroidClient {
-    constructor(private readonly options: DrDroidClient.Options) {}
+    constructor(protected readonly options: DrDroidClient.Options) {}
 
     /**
      * Allows users to send events to Doctor Droid
      */
-    public async publish(request: DrDroid.SendEventsRequest): Promise<void> {
+    public async sendEvent(request: DrDroid.SendEventsRequest): Promise<void> {
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.DrDroidEnvironment.Production, "/e/ingest/events/v3"),
+            url: urlJoin(this.options.environment ?? environments.DrDroidEnvironment.Production, "/e/ingest/events/v2"),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
-            body: await serializers.SendEventsRequest.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.SendEventsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return;
@@ -55,5 +57,14 @@ export class DrDroidClient {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
+        if (bearer != null) {
+            return `Bearer ${bearer}`;
+        }
+
+        return undefined;
     }
 }

@@ -3,19 +3,22 @@
  */
 
 import * as serializers from "..";
-import { DrDroid } from "@fern-api/drdroid";
+import * as DrDroid from "../../api";
 import * as core from "../../core";
 
 export const Event: core.serialization.ObjectSchema<serializers.Event.Raw, DrDroid.Event> = core.serialization.object({
     name: core.serialization.string(),
-    timestamp: core.serialization.date().optional(),
-    kvs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    timestamp: core.serialization.number(),
+    kvs: core.serialization.record(
+        core.serialization.string(),
+        core.serialization.lazy(async () => (await import("..")).Value)
+    ),
 });
 
 export declare namespace Event {
     interface Raw {
         name: string;
-        timestamp?: string | null;
-        kvs: Record<string, unknown>;
+        timestamp: number;
+        kvs: Record<string, serializers.Value.Raw>;
     }
 }

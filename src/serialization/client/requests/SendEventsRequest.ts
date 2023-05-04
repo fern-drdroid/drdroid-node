@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../..";
-import { DrDroid } from "@fern-api/drdroid";
+import * as DrDroid from "../../../api";
 import * as core from "../../../core";
 
 export const SendEventsRequest: core.serialization.Schema<

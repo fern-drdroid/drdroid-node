@@ -4,8 +4,7 @@
 
 import * as DrDroid from "..";
 
-export interface Event {
-    name: string;
-    timestamp: number;
-    kvs: Record<string, DrDroid.Value>;
+export interface KeyValue {
+    key: string;
+    value: DrDroid.Value;
 }

@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/drdroid",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "private": false,
     "repository": "https://github.com/fern-drdroid/drdroid-node",
     "main": "./index.js",

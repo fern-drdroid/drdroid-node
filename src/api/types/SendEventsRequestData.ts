@@ -4,6 +4,6 @@
 
 import * as DrDroid from "..";
 
-export interface SendEventRequestData {
+export interface SendEventsRequestData {
     events: DrDroid.Event[];
 }

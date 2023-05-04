@@ -10,11 +10,11 @@ export const SendEventsRequest: core.serialization.Schema<
     serializers.SendEventsRequest.Raw,
     DrDroid.SendEventsRequest
 > = core.serialization.object({
-    data: core.serialization.lazyObject(async () => (await import("../..")).SendEventRequestData),
+    data: core.serialization.lazyObject(async () => (await import("../..")).SendEventsRequestData),
 });
 
 export declare namespace SendEventsRequest {
     interface Raw {
-        data: serializers.SendEventRequestData.Raw;
+        data: serializers.SendEventsRequestData.Raw;
     }
 }

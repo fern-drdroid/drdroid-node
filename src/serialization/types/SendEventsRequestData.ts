@@ -6,14 +6,14 @@ import * as serializers from "..";
 import * as DrDroid from "../../api";
 import * as core from "../../core";
 
-export const SendEventRequestData: core.serialization.ObjectSchema<
-    serializers.SendEventRequestData.Raw,
-    DrDroid.SendEventRequestData
+export const SendEventsRequestData: core.serialization.ObjectSchema<
+    serializers.SendEventsRequestData.Raw,
+    DrDroid.SendEventsRequestData
 > = core.serialization.object({
     events: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).Event)),
 });
 
-export declare namespace SendEventRequestData {
+export declare namespace SendEventsRequestData {
     interface Raw {
         events: serializers.Event.Raw[];
     }

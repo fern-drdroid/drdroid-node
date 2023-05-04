@@ -5,5 +5,5 @@
 import * as DrDroid from "../..";
 
 export interface SendEventsRequest {
-    data: DrDroid.SendEventRequestData;
+    data: DrDroid.SendEventsRequestData;
 }

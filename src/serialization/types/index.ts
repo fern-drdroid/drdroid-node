@@ -1,4 +1,4 @@
-export * from "./SendEventRequestData";
+export * from "./SendEventsRequestData";
 export * from "./Event";
 export * from "./Value";
 export * from "./StringValue";

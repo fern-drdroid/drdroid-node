@@ -22,7 +22,7 @@ export class DrDroidClient {
     /**
      * Allows users to send events to Doctor Droid
      */
-    public async sendEvent(request: DrDroid.SendEventsRequest): Promise<void> {
+    public async sendEvents(request: DrDroid.SendEventsRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.DrDroidEnvironment.Production, "/e/ingest/events/v2"),
             method: "POST",

@@ -20,7 +20,7 @@ const client = new DrDroidClient({
     token: "YOUR_TOKEN",
 });
 
-await client.publish("Order_Created", {
+client.publish("Order_Created", {
     ID: "13432",
     City: "BLR",
     IS_COD: false,
@@ -32,7 +32,7 @@ await client.publish("Order_Created", {
 If you want to publish with a certain timestamp and not default to the current system time, you can pass an event time.
 
 ```typescript
-await client.publish(
+client.publish(
     "Order_Created",
     {
         ID: "13432",

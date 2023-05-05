@@ -9,6 +9,14 @@ The Doctor Droid Node.js library provides access to the Doctor Droid API from Ja
 
 API reference documentation is available [here](https://docs.drdroid.io/reference/overview).
 
+## Installation
+
+```
+npm install --save @fern-api/drdroid
+# or
+yarn add @fern-api/drdroid
+```
+
 ## Usage
 
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-tnryds?file=app.ts)
